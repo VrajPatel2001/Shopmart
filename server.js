@@ -5,6 +5,13 @@ require('dotenv').config({ path: 'config/keys.env' });
 const app = express();
 
 app.use(express.json());
+const userController = require("./controllers/UserController");
+const productController = require("./controllers/ProductController");
+
+
+
+app.use("/user",userController);
+
 
 
 
