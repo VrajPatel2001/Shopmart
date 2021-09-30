@@ -19,6 +19,43 @@ exports.createAProduct = (req,res)=>{
 
 exports.getProducts = (req,res)=>{
     
+    if(req.query.category)
+    {
+        productModel.find({productCategory : req.query.category})
+        .then(products=>{
+            res.json({
+                message: `A list of products with category ${req.query.category}`,
+                data: products,
+            totalproducts: products.length
+
+            })
+        })
+        .catch(err=>{
+            res.status(500).json({
+                message:err
+            })
+        })
+    }
+
+    else if(req.query.bestSeller)
+    {
+        productModel.find({bestSeller : req.query.bestSeller})
+        .then(products=>{
+            res.json({
+                message: `A list of products with category ${req.query.bestSeller}`,
+                data: products,
+            totalproducts: products.length
+
+            })
+        })
+        .catch(err=>{
+            res.status(500).json({
+                message:err
+            })
+        })
+    }
+
+else{
     productModel.find()
     .then(products=>{
         res.json({
@@ -33,8 +70,43 @@ exports.getProducts = (req,res)=>{
         })
     })
 }
+}
 
 
+exports.getCategories = (req, res)=>{
+
+    productModel.distinct("productCategory")
+    .then(categories=>{
+        res.json({
+            message: "All Product Categories",
+            data: categories,
+            totalcategories: categories.length
+        })
+    })
+    .catch(err=>{
+        res.status(500).json({
+            message:err
+        })
+    })
+
+}
+
+// implemented in all products route
+/*exports.getBestSeller = (req,res)=>{
+    productModel.find({bestSeller : true})
+    .then(product=>{
+        res.json({
+            message:"All best seller products",
+            data: product,
+            totalBestSeller: product.length
+        })
+    })
+    .catch(err=>{
+        res.status(500).json({
+            message:err
+        })
+    })
+}*/
 
 
 
