@@ -11,6 +11,7 @@ const productController = require("./controllers/ProductController");
 
 
 app.use("/user",userController);
+app.use("/product",productController)
 
 
 
