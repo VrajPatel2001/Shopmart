@@ -1,6 +1,11 @@
 const express = require("express");
 const mongoose =require("mongoose");
+
+if(process.env.NODE_ENV != "production")
+{
 require('dotenv').config({ path: 'config/keys.env' });
+
+}
 
 const app = express();
 
