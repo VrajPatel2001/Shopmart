@@ -37,24 +37,6 @@ exports.getProducts = (req,res)=>{
         })
     }
 
-    else if(req.query.bestSeller)
-    {
-        productModel.find({bestSeller : req.query.bestSeller})
-        .then(products=>{
-            res.json({
-                message: `A list of products with category ${req.query.bestSeller}`,
-                data: products,
-            totalproducts: products.length
-
-            })
-        })
-        .catch(err=>{
-            res.status(500).json({
-                message:err
-            })
-        })
-    }
-
 else{
     productModel.find()
     .then(products=>{
@@ -72,6 +54,24 @@ else{
 }
 }
 
+exports.getBestSeller = (req,res)=>{
+    
+        productModel.find({bestSeller : true})
+        .then(products=>{
+            res.json({
+                message: `A list of best seller products`,
+                data: products,
+                totalproducts: products.length
+
+            })
+        })
+        .catch(err=>{
+            res.status(500).json({
+                message:err
+            })
+        })
+    
+}
 
 exports.getCategories = (req, res)=>{
 

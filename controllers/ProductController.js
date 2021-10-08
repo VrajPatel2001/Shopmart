@@ -9,7 +9,7 @@ router.get("/getProducts",productService.getProducts)
 
 router.get("/getCategories",productService.getCategories)
 
-//router.get("/getBestSeller",productService.getBestSeller)
+router.get("/getBestSeller",productService.getBestSeller)
 
 router.get("/getAProduct/:id",productService.getAProduct)
 
