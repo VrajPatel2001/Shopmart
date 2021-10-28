@@ -31,6 +31,7 @@ exports.getAUser= (req,res)=>{
                 message: `User with the id ${req.params.id}`,
                 data: user
             })
+            console.log(user);
         }
         else{
             res.status(404).json({
