@@ -12,7 +12,7 @@ const app = express();
 
 const corsOptionsDelegate = function (req, callback) 
 {
-  const allowlist = ['http://localhost:3000', 'http://localhost:3000/productDescription/617a08e1f193f7a5ddd4a5b0','http://127.0.0.1:3000',"https://inspiring-darwin-e7d915.netlify.app/"]
+  const allowlist = ['http://localhost:3000', 'http://localhost:3000/productDescription/617a08e1f193f7a5ddd4a5b0','http://127.0.0.1:3000',"https://inspiring-darwin-e7d915.netlify.app"]
   let corsOptions;
   if (allowlist.indexOf(req.header('Origin')) !== -1) {
     corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
